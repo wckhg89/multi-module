@@ -1,0 +1,3 @@
+[submodule "mybatis"]
+    path = mybatis
+	ignore = dirty
