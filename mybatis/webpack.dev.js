@@ -8,13 +8,12 @@ module.exports = {
 
     devServer: {
         historyApiFallback: true,
-        publicPath: '/static/js/dist',
+        publicPath: '/static/dist',
         host: "0.0.0.0",
-        port: 9000,
+        port: 3000,
         proxy: {
-            "**": "http://localhost",
-        },
-        disableHostCheck: true
+            "**": "http://localhost:9000",
+        }
 
     },
     plugins: [
