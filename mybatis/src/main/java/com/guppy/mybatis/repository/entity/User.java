@@ -6,6 +6,7 @@ import lombok.*;
  * Created by kanghonggu on 2017. 6. 25..
  */
 
+
 @Data
 @ToString
 @EqualsAndHashCode(of = {"id"})
