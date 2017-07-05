@@ -33,6 +33,7 @@ allprojects {
 	apply plugin: 'spring-boot'
 	apply plugin: 'io.spring.dependency-management'
 
+
 	sourceCompatibility = 1.8
 
 	repositories {
@@ -40,6 +41,7 @@ allprojects {
 	}
 
 }
+
 
 project(':mybatis') {
     apply plugin: "com.moowork.node"
@@ -67,6 +69,11 @@ project(':mybatis') {
 		runtime('com.h2database:h2')
 
 		testCompile('org.springframework.boot:spring-boot-starter-test')
+	}
+
+	node {
+		download = true
+		version = "6.9.5"
 	}
 
     task runNpmBuildScript(type: NpmTask) {
