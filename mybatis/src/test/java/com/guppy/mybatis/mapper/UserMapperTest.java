@@ -1,7 +1,7 @@
 package com.guppy.mybatis.mapper;
 
 import com.guppy.mybatis.repository.UserMapper;
-import com.guppy.mybatis.repository.entity.User;
+import com.guppy.mybatis.repository.entity.Member;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,16 +28,16 @@ public class UserMapperTest {
     @Autowired
     private UserMapper userMapper;
 
-    private User entity;
+    private Member entity;
 
     @Before
     public void setUp() {
-        entity = new User();
+        entity = new Member();
         entity.setUserName("stunstun");
 
         userMapper.save(entity);
 
-        List<User> userList
+        List<Member> userList
                 = userMapper.findByUserName("stunstun");
 
         assertNotNull(userList);
@@ -46,7 +46,7 @@ public class UserMapperTest {
 
     @Test
     public void findOneTest () {
-        User user = userMapper.findOne(1L);
+        Member user = userMapper.findOne(1L);
 
         assertNotNull(user);
     }
@@ -55,10 +55,10 @@ public class UserMapperTest {
     public void insertAndDelete() {
         assertNotNull(entity);
 
-        List<User> users = userMapper.findByUserName("stunstun");
+        List<Member> users = userMapper.findByUserName("stunstun");
         userMapper.delete(users.get(0));
 
-        List<User> deleteUsers = userMapper.findByUserName("stunstun");
+        List<Member> deleteUsers = userMapper.findByUserName("stunstun");
         assertEquals(0, deleteUsers.size());
 
     }

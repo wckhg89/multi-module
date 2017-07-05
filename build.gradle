@@ -6,6 +6,7 @@ buildscript {
 		springSecurityOauth2Version = '2.1.0.RELEASE'
         springDataRedisSessionVersion = '1.3.1.RELEASE'
 		dependencyManagementVersion = '1.0.2.RELEASE'
+        lombokVersion = '1.16.16'
 
         gradleNodeVersion = '1.2.0'
 	}
@@ -42,11 +43,21 @@ allprojects {
 
 }
 
+project(':core') {
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
+        compileOnly("org.projectlombok:lombok:${lombokVersion}")
+
+        testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    }
+}
+
 
 project(':mybatis') {
     apply plugin: "com.moowork.node"
 
 	dependencies {
+        compile project(':core')
         compile('org.springframework.boot:spring-boot-starter-mustache')
 		compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisStarterVersion")
 		compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
@@ -60,12 +71,15 @@ project(':mybatis') {
 		compile("com.zaxxer:HikariCP:$hikariCPVersion")
 
 
+        compile("org.springframework.session:spring-session-data-redis")
+        compile("com.github.kstyrc:embedded-redis:0.6")
+
 		// https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2
-		// compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauth2Version}")
+        compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauth2Version}")
 
 
 		// https://mvnrepository.com/artifact/org.projectlombok/lombok
-		compileOnly("org.projectlombok:lombok:1.16.16")
+		compileOnly("org.projectlombok:lombok:${lombokVersion}")
 		runtime('com.h2database:h2')
 
 		testCompile('org.springframework.boot:spring-boot-starter-test')

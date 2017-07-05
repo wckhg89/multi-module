@@ -1,7 +1,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.guppy.mybatis.repository.UserMapper">
 
-    <select id="findAll" resultType="com.guppy.mybatis.repository.entity.User">
+    <select id="findAll" resultType="com.guppy.mybatis.repository.entity.Member">
         SELECT
         id AS id,
         user_name AS userName
@@ -16,7 +16,7 @@
         )
     </select>
 
-    <select id="findOne" resultType="com.guppy.mybatis.repository.entity.User" parameterType="Long">
+    <select id="findOne" resultType="com.guppy.mybatis.repository.entity.Member" parameterType="Long">
         SELECT
         id AS id,
         user_name AS userName
@@ -24,7 +24,7 @@
         WHERE user.id = #{value}
     </select>
 
-    <select id="findByUserName" resultType="com.guppy.mybatis.repository.entity.User">
+    <select id="findByUserName" resultType="com.guppy.mybatis.repository.entity.Member">
         SELECT
         id AS id,
         user_name AS userName
@@ -32,7 +32,7 @@
         WHERE user.user_name = #{userName}
     </select>
 
-    <insert id="save" parameterType="com.guppy.mybatis.repository.entity.User">
+    <insert id="save" parameterType="com.guppy.mybatis.repository.entity.Member">
         INSERT INTO user (
         user_name
         )
@@ -41,13 +41,13 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.guppy.mybatis.repository.entity.User">
+    <update id="update" parameterType="com.guppy.mybatis.repository.entity.Member">
         UPDATE user SET
         user_name = #{userName}
         WHERE user.id = #{id}
     </update>
 
-    <delete id="delete" parameterType="com.guppy.mybatis.repository.entity.User">
+    <delete id="delete" parameterType="com.guppy.mybatis.repository.entity.Member">
         DELETE FROM user WHERE user.id = #{id}
     </delete>
 

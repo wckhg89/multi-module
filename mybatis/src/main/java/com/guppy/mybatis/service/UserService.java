@@ -1,7 +1,7 @@
 package com.guppy.mybatis.service;
 
 import com.guppy.mybatis.repository.UserMapper;
-import com.guppy.mybatis.repository.entity.User;
+import com.guppy.mybatis.repository.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ public class UserService {
     private UserMapper userMapper;
 
 
-    public User findOne (Long id) {
+    public Member findOne (Long id) {
         return userMapper.findOne(id);
     }
 

@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
-public class User {
+public class Member {
     private Long id;
 
     private String userName;

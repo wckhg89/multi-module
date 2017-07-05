@@ -1,6 +1,6 @@
 package com.guppy.mybatis.repository;
 
-import com.guppy.mybatis.repository.entity.User;
+import com.guppy.mybatis.repository.entity.Member;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,18 +13,18 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    List<User> findAll();
+    List<Member> findAll();
 
-    List<User> findByUserName(@Param("userName") String userName);
+    List<Member> findByUserName(@Param("userName") String userName);
 
-    User findOne(Long id);
+    Member findOne(Long id);
 
     Boolean exists(Long id);
 
-    void save(User user);
+    void save(Member user);
 
-    void update(User user);
+    void update(Member user);
 
-    void delete(User user);
+    void delete(Member user);
 
 }
